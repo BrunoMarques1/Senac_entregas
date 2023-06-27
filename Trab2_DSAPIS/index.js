@@ -63,37 +63,38 @@ app.get('/tarefas', (req, res) => {
 });
 
 app.put('/tarefas/:id', (req, res) => {
-    const id = req.params.id;
-    const {aluno, materia, professor, data_entrega, descricao, entregue } = req.body;
-    
-    const query = 'UPDATE tarefa SET materia=?, professor=?, data_entrega=?, descricao=?, entregue=? WHERE id=?';
-    const values = {aluno, materia, professor, data_entrega, descricao, entregue};
-  
-    banco.query(query, [values, id], (error, results) => {
-      if (error) {
-        console.error('Erro ao atualizar tarefa:', error);
-        res.status(500).json({ error: 'Erro ao atualizar tarefa' });
-      } else {
-        res.json({ message: 'Tarefa atualizada com sucesso' });
-      }
-    });
+  const { id } = req.params;
+  const { aluno, materia, professor, data_entrega, descricao, entregue } = req.body;
+
+  const query =
+    'UPDATE tarefa SET aluno=?, materia=?, professor=?, data_entrega=?, descricao=?, entregue=? WHERE id=?';
+  const values = [aluno, materia, professor, data_entrega, descricao, entregue, id];
+
+  banco.query(query, values, (error, results) => {
+    if (error) {
+      console.error('Erro ao atualizar tarefa:', error);
+      res.status(500).json({ error: 'Erro ao atualizar tarefa' });
+    } else {
+      res.json({ message: 'Tarefa atualizada com sucesso' });
+    }
   });
-  
+});
 
 app.delete('/tarefas/:id', (req, res) => {
-    const id = req.params.id;
-  
-    const query = 'DELETE FROM tarefa WHERE id=?';
-  
-    banco.query(query, id, (error, results) => {
-      if (error) {
-        console.error('Erro ao excluir tarefa:', error);
-        res.status(500).json({ error: 'Erro ao excluir tarefa' });
-      } else {
-        res.json({ message: 'Tarefa excluída com sucesso' });
-      }
-    });
+  const { id } = req.params;
+
+  const query = 'DELETE FROM tarefa WHERE id=?';
+
+  banco.query(query, id, (error, results) => {
+    if (error) {
+      console.error('Erro ao excluir tarefa:', error);
+      res.status(500).json({ error: 'Erro ao excluir tarefa' });
+    } else {
+      res.json({ message: 'Tarefa excluída com sucesso' });
+    }
   });
+});
+
   
 
 app.listen(port, () => {
