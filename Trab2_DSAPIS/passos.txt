@@ -1,0 +1,7 @@
+   - Token Name: Insira um nome para o token.
+   - Grant Type: Selecione "Authorization Code".
+   - Callback URL: Insira a URL de callback do seu aplicativo, que deve ser `http://localhost:3000/auth/github/callback`.
+   - Auth URL: Insira a URL de autenticação do provedor OAuth, que é `https://github.com/login/oauth/authorize`.
+   - Access Token URL: Insira a URL para obter o access token do provedor OAuth, que é `https://github.com/login/oauth/access_token`.
+   - Client ID: effd810fb1e5e164ca9d.
+   - Client Secret: 1ef28d0121d5e80ca23b5139744e4d59e2136cb9.
