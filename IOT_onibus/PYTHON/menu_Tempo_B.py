@@ -64,7 +64,7 @@ while True:
     onibus_recebido = str(arduino.readline())
     criar_onibus(onibus_recebido)
     tempo += 1
-    if (aux != lista_onibus_passado) or (aux2 != lista_onibus_proximo) or (tempo > 1500000):
+    if (aux != lista_onibus_passado) or (aux2 != lista_onibus_proximo) or (tempo > 15):
         print("=========================")
         print("Lista de ônibus passados:")
         print("-------------------------")
